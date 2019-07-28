@@ -14,14 +14,17 @@
 
         }
 
+
+
         public function show(){
 
             $host = 'https://demo.innosabi.com/api/v2/project/filter';
             $username = 'api@innosabi.com';
             $password = '0thRuch0';
+
+            $dataToReturn = [];
+
             $ch = curl_init($host);
-            //curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/xml', $additionalHeaders));
-            //curl_setopt($ch, CURLOPT_HEADER, 1);
             curl_setopt($ch, CURLOPT_USERPWD, $username . ":" . $password);
             curl_setopt($ch, CURLOPT_TIMEOUT, 30);
             curl_setopt($ch, CURLOPT_POST, 1);
@@ -33,13 +36,75 @@
                 return;
             }
             curl_close($ch);
-            //$result = json_decode($result,true);
-            //var_dump(json_decode($result, true));
+
+
             $data = $result;
+            $data = json_decode($data, true);
+
+            $include = $_GET['include'];
+            $parameters = explode(',', $include); 
+
+            
+            $output = '';
+            $print = '';
+            $count = 0;
+            foreach ($data['data'] as $key => $value) {
+
+                $name = $value["name"];
+                $image = $value["media"][0]["hash"];
+
+                foreach ($parameters as $key => $paramVal) {
+                    if($paramVal == 'startDate'){
+                        $print .= '<p>'.$paramVal.' : '.$value[$paramVal]['date'].'</p>';    
+                    }
+                    else{
+                        $print .= '<p>'.$paramVal.' : '.$value[$paramVal].'</p>';
+                    }
+                }
+
+                if($count == 0)
+                {
+                    $output .= '<div class="item active">';
+                }
+                else
+                {
+                    $output .= '<div class="item">';
+                }
+                $output .= '
+                    <img class="d-block w-100" src="https://demo.innosabi.com/media/crop/'.$image.'/300/200/1" alt="'.$name.'" style="width:100%; height:100%;"/>
+                    <div class="carousel-caption">
+                        '.$print.'
+                    </div>
+                    </div>
+                ';
+                $print = '';
+                $count = $count + 1;
+            }
+
+            $SlideshowOutput = '';
+            $countSlieds = 0;
+            foreach ($data['data'] as $key => $value) {
+            
+                if($countSlieds == 0)
+                {
+                    $SlideshowOutput .= '
+                        <li data-target="#dynamic_slide_show" data-slide-to="'.$count.'" class="active"></li>
+                    ';
+                }
+                else
+                {
+                $SlideshowOutput .= '
+                    <li data-target="#dynamic_slide_show" data-slide-to="'.$count.'"></li>
+                ';
+                }
+                $countSlieds = $countSlieds + 1;
+            }
+            $dataToReturn[0] = $output;
+            $dataToReturn[1] = $SlideshowOutput;
 
             //$proxy = new Proxy;
             //$posts = $proxy->getPosts('https://demo.innosabi.com/api/v2/project/filter');
-            $this->view('projects/show', $data);
+            $this->view('projects/show', $dataToReturn);
         }
     }
 ?>
