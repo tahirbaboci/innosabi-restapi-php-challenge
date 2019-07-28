@@ -4,7 +4,7 @@
     define('APPROOT', dirname(dirname(__FILE__)));
 
     //URL Root
-    define('URLROOT', 'http://localhost/UDEMY_TUTORIAL/phpchallenge');
+    define('URLROOT', 'http://localhost/phpchallenge');
 
     //Site Name
     define('SITENAME', 'phpchallenge');
