@@ -1,37 +1,17 @@
-<!doctype html>
-<html class="no-js" lang="">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>innosabi challenge - Highlight</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="manifest" href="site.webmanifest">
+<?php require APPROOT . '/views/inc/header.php'; ?>
 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"
-              integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy"
-              crossorigin="anonymous">
-
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/main.css">
-    </head>
-    <body>
-
-        <main role="main" class="container">
-            <div class="container">
-                <form class="form-inline">
-                    <label class="sr-only" for="search">Search</label>
-                    <div class="input-group">
-                        <input id="search" type="text" class="form-control" placeholder="Highlight in text">
-                        <span class="input-group-btn">
-                            <button class="btn btn-secondary" type="button">Search</button>
-                        </span>
-                    </div>
-                </form>
-
-                <div class="search-content">
-
+    <div class="card card-body bg-light mt-5">
+        <h1 align='center'>Highlighting</h1>
+        <form action="<?php echo URLROOT; ?>/pages/highlight" method="post">
+          <div class="form-group">
+          NOTE : Please first click search to get the text :)<br/><br/>
+              Search Text : <input type="text" name="search"> 
+              <input type="submit" class="btn btn-success" value="Search" onClick="transfer()">
+          </div>    
+          <div class="form-group">
+              <textarea id="text" name="body" style="display:none;">
+                    
                     <h2>Perceived end knowledge certainly day sweetness why cordially</h2>
 
                     <p>As collected deficient objection by it discovery sincerity curiosity. Quiet decay who round three
@@ -80,20 +60,17 @@
                         use prudent placing. Passage to so distant behaved natural between do talking. Friends off her
                         windows painful. Still gay event you being think nay for. In three if aware he point it. Effects
                         warrant me by no on feeling settled resolve.</p>
-                </div>
-            </div>
+              
+              </textarea>
+          </div>
+        </form>
+    </div>
 
-        </main>
+    <div>
 
-        <script src="js/vendor/modernizr-3.5.0.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js"
-                integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-                crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"
-                integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
-                crossorigin="anonymous"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.2.1.min.js"><\/script>')</script>
-        <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
-    </body>
-</html>
+        <?php  echo $data[0]; ?>
+
+    </div>
+
+
+<?php require APPROOT . '/views/inc/footer.php'; ?>
