@@ -10,7 +10,6 @@
 <input type="button" value="Show Projects" id="Show" />
 
 <script>
-    //projects controllera gecmeye calisiyorum ama olmuyor
     document.getElementById("Show").onclick = function () {
         location.href = '<?php echo URLROOT;?>/Projects/show?include=name,description';
     };

@@ -5,10 +5,8 @@
     </div>
 </div>
 
-
-
-
 <br />
+
   <div class="container" style="width:60%; height:90%;">
    <h2 align="center">Slider and proxy</h2>
    <br />

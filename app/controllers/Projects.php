@@ -102,8 +102,6 @@
             $dataToReturn[0] = $output;
             $dataToReturn[1] = $SlideshowOutput;
 
-            //$proxy = new Proxy;
-            //$posts = $proxy->getPosts('https://demo.innosabi.com/api/v2/project/filter');
             $this->view('projects/show', $dataToReturn);
         }
     }
