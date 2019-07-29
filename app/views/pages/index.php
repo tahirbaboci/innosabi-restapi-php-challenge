@@ -13,7 +13,7 @@
 <script>
     //projects controllera gecmeye calisiyorum ama olmuyor
     document.getElementById("btnProjects").onclick = function () {
-        location.href = '<?php echo $_SERVER["REQUEST_URI"];?>Projects';
+        location.href = '<?php echo URLROOT;?>/Projects';
     };
 </script>
 
