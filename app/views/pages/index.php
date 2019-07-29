@@ -9,11 +9,14 @@
 
 
 <input type="button" value="Projects" id="btnProjects" />
+<input type="button" value="Highlighting" id="btnHighlight" />
 
 <script>
-    //projects controllera gecmeye calisiyorum ama olmuyor
     document.getElementById("btnProjects").onclick = function () {
         location.href = '<?php echo URLROOT;?>/Projects';
+    };
+    document.getElementById("btnHighlight").onclick = function () {
+        location.href = '<?php echo URLROOT;?>/pages/highlight';
     };
 </script>
 
